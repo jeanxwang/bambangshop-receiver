@@ -85,5 +85,7 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. `RwLock<>` allows multiple threads to read the data in parallel but only one thread to write the data at a time, which blocks all readers and writers. It also ensures that it has exclusive access, so no other thread can read or write until the write operation is complete. This prevents data races. On the other hand, a `Mutex<>` (Mutual Exclusion) allows only one thread to access the data at a time, whether it’s reading or writing. This means even simple read operations would block each other, which could lead to performance issues if reads are frequent.
+2. In Rust, a `static` variable is similar to a global variable. It’s allocated for the entire duration of the program, and its memory is shared across all threads. This means that if Rust allowed mutation of `static` variables without any restrictions, it could lead to data races. To prevent these issues, Rust enforces that `static` variables are immutable by default.
 
 #### Reflection Subscriber-2
